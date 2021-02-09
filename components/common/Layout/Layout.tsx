@@ -5,11 +5,11 @@ import react from 'react'
 
 function Layout({ children }) {
     return (
-        <div>
+        <>
             <NavBar />
             {children}
             <Footer/>
-        </div>
+        </>
     )
 }
 export default Layout

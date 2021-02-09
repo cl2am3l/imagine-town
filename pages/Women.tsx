@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "next/link";
+import Layout from "../components/common/Layout";
 
 interface Props {}
 
