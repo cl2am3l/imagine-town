@@ -1,0 +1,22 @@
+{
+  "menu": [
+    {
+      "id": "w1",
+      "link": "/women",
+      "title": "Women",
+      "category1": ["Link 1", "Link 2", "Link 3"]
+    },
+    {
+      "id": "m1",
+      "link": "/men",
+      "title": "Men",
+      "category1": ["Link 1", "Link 2", "Link 3"]
+    },
+    {
+      "id": "k1",
+      "link": "/kid",
+      "title": "Kid",
+      "category1": ["Link 1", "Link 2", "Link 3"]
+    }
+  ]
+}

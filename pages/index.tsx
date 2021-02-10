@@ -1,13 +1,13 @@
-import React from "react";
+import React, { ReactElement } from 'react'
 
-interface Props {}
+interface Props {
+  
+}
 
-const Home = (props: Props) => {
+export default function Home({}: Props): ReactElement {
   return (
-    <div>
+    <>
       <div>home</div>
-    </div>
-  );
-};
-
-export default Home;
+    </>
+  )
+}

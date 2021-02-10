@@ -1,50 +1,30 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import s from "./Navbar.module.css";
 import Modal from "react-modal";
+import { GetStaticProps } from "next";
+import megamenu from "./megamenu.json";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
-const customAsideStyles = {
-  content: {
-    // position:"initial!important"
-  },
-};
-// Modal.setAppElement(root)
-interface Props {}
+export interface Menu {
+  id: string;
+  link: string;
+  title: string;
+  category1: string[];
+}
 
-const Navbar = (props: Props) => {
-  var subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
-  const [modalAsideIsOpen, setAsideIsOpen] = React.useState(false);
-  function openAsideModal() {
-    setAsideIsOpen(true);
-  }
-  function openModal() {
-    setIsOpen(true);
-  }
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
-  }
-  function closeAsideModal() {
-    setAsideIsOpen(false);
-  }
-  function closeModal() {
-    setIsOpen(false);
-  }
+export interface Data {
+  menu: Menu[];
+}
+interface Props {
+  data: Data;
+}
 
+export default function Navbar({ data }: Props): ReactElement {
+  // const { menu } = data;
+  // console.log(data + "dsadsdasddasdasdas");
   return (
-    <>
+    <div>
       <div className={s.navbar}>
         <div className={s.dropdown}>
           <button className={s.dropbtn}>
@@ -53,89 +33,32 @@ const Navbar = (props: Props) => {
             </Link>
           </button>
         </div>
-        <div className={s.dropdown}>
-          <button className={s.dropbtn}>
-            <Link href="/women">
-              <a>Women</a>
-            </Link>
-          </button>
-        </div>
-        ))} */}
-      </div>
+        {/* {menu.map((item) => (
+          <div className={s.dropdown}>
+            <button className={s.dropbtn}>
+              <Link href={item.link}>
+                <a>{item.title}</a>
+              </Link>
+            </button>
+            <div className={s.dropdowncontent}>
               <div className={s.column}>
-                <h3>Category 2</h3>
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-              </div>
-              <div className={s.column}>
-                <h3>Category 3</h3>
+                <h3>{}</h3>
                 <a href="#">Link 1</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
               </div>
             </div>
           </div>
-        </div>
-        <div className={s.dropdown}>
-          <form className={s.forminline} action="#">
-            <input
-              className={[s.formcontrol, s.mrsm2].join(" ")}
-              type="text"
-              placeholder="Search"
-            />
-            <button className="btn btn-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-        <div>
-          <button onClick={openModal}>Open Modal</button>
-          <Modal
-            isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-            ariaHideApp={false}
-          >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-            <button onClick={closeModal}>close</button>
-            <div>I am a modal</div>
-            <form>
-              <input />
-              <button>tab navigation</button>
-              <button>stays</button>
-              <button>inside</button>
-              <button>the modal</button>
-            </form>
-          </Modal>
-        </div>
-        <div>
-          <button onClick={openAsideModal}>Open Modal</button>
-          <Modal
-            isOpen={modalAsideIsOpen}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={closeAsideModal}
-            style={customAsideStyles}
-            contentLabel="Example Modal"
-            ariaHideApp={false}
-          >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello Aside modal</h2>
-            <button onClick={closeAsideModal}>close</button>
-            <div>I am a modal</div>
-            <form>
-              <input />
-              <button>tab navigation</button>
-              <button>stays</button>
-              <button>inside</button>
-              <button>the modal</button>
-            </form>
-          </Modal>
-        </div>
+        ))} */}
       </div>
-    </>
+    </div>
   );
+}
+export const getStaticProps: GetStaticProps = async (context) => {
+  const data: Data = megamenu;
+  return {
+    props: {
+      data,
+    },
+  };
 };
-
-export default Navbar;
