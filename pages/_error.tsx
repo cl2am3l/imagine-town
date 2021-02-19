@@ -4,10 +4,10 @@ interface Props {
     
 }
 
-export default function men({}: Props): ReactElement {
+export default function _error({}: Props): ReactElement {
     return (
         <div>
-            Men
+            test
         </div>
     )
 }

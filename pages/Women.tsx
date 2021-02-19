@@ -1,14 +1,13 @@
-import React from "react";
-import Layout from "../components/common/Layout";
+import React, { ReactElement } from 'react'
 
-interface Props {}
+interface Props {
+  
+}
 
-const Women = (props: Props) => {
+export default function women({}: Props): ReactElement {
   return (
     <div>
-      <div>Women</div>
+      Women
     </div>
-  );
-};
-
-export default Women;
+  )
+}

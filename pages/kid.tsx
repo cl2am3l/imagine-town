@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 interface Props {
     
 }
 
-const Kid = (props: Props) => {
+export default function kid({}: Props): ReactElement {
     return (
         <div>
             Kid
         </div>
     )
 }
-
-export default Kid
